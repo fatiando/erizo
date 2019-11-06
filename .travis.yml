@@ -19,9 +19,9 @@ env:
     global:
         # Encrypted variables
         # Github Token for pushing the built HTML (GH_TOKEN)
-        #-
+        - secure: "EpA+Ecp0B4AjPpjORelUICbBZhHLm9eq+ESkgY8/tYllmZbsOI1dpG6CgZ5cB9aUJ5du5b9XoIIx63oObAo0WfQZB++KiIGMzAMrDHc6yLD5r1NVhfbgdINeR35xLchXeHmWNbuiBYIFYyn1ntgxLJakJoFzuNCvmb0+7ICEOKVZ0a76+JJcC7N6KcQ1RmU1chX0QDjHdclIgaV7UvaAcla5/z3yWjvDrWkm/0kNIiQa3EcbkJhJHm/r/eAhgZoat40Zyx6dXGKIqutDByatRJSrqScc0W/zr3XpWZFh6fl2t0J+qzaRpSAzJNsb+qFoOwjmk2+B/pYh03RxFbi5LWS6zOWWK8YciYDJKm0JDeDwXrkozDZzSMH87cyuRTGLn8OUNdz808g8ujvENwsYCG7mY70YRS3Wvwfpz3taENs1WyTwKPM3+ydU3o1xs5onq24gLHYjMPB1pUdHx+nLkdgYbgKPFXsGUCSc16g0xEgJelTfI33Yobo5tAInXEqH/OdxOJRxsKoIvCuO293AOJVYrcPDw4Fah9vhIQqdNsz4xPk0S4UdqJ2WFmF087wDm+B4WW/kMxSmrVbxpaHwis8/LMnyM76MPpgziap5awkBLLuK9RDQmhP+TigCuof50vMRk9D+fdSmJ1X5sKtzf6t7OZB8rBx51JUe3TflCU8="
         # PyPI password for deploying releases (TWINE_PASSWORD)
-        #-
+        - secure: "VqO8ueQgqrKuSFKo4MENqBIF+138UzPZuLNPeTdLeQ9AO7HMgRBZ5jtHMUCUZFjAVan5bdiitWJYNnJfoJv7jwMoeWBXQO/It+llzIWnHkphyn6TTZq0nis+aeHTt80/3uNNTiZTKVjA7GWN6lr6X+TEBJxRvPxuNmQkzGfOWvzFOab3X4moZiYVyD2BG+ko/YpP1g0pEhnUpCATA5v9J6KEpe3/kLOs+lWOLsMY+JWsBAm7M0CPKbBv+QvTRG8F7bIx8WceQugGyJvcQzkcqlFwNNiNnfYn7ucEBpceupbgfLyDMg8Z14MTfYo/Qi7cWjUpUj+arHU9kZexX0o0MLOLuekr14yMFzDUu0Hncv+bXb9HveWcIX9MlZ6KanG1x8nDFLodkFkPya64klL2c42VJKEcZyMlKDUiBU0+ibJFo0UXywEkezABX7kM1PZQ1/mbtnVhpb9NZnDFM051o85Y8BetLPK3I+D3EsTAI43kL8mdhhtrjXQ55g1UiquzUjSaEGjqoiauXDu8PDJWaoPeTxq/oGmSUT4nlFAG1eaZAkE0D0lIEGbMPrhJOMfDOfFE3c2Ng8YU4yemDtfzfXP+9eUqDFfhqt+tblKyoS4TAckJjmbxjP2HHDKLqCP5v5cYuwoJvoiBxJmLLqv389C97dm/KnagJP55qFHeqZo="
         - TWINE_USERNAME=Leonardo.Uieda
         # The files with the listed requirements to be installed by conda
         - CONDA_REQUIREMENTS=requirements.txt
