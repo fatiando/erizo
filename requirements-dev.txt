@@ -1,0 +1,9 @@
+# Development requirements
+pytest
+pytest-cov
+pytest-mpl
+coverage
+sphinx=1.8.5
+sphinx_rtd_theme
+sphinx-gallery
+numpydoc
