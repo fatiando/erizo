@@ -7,13 +7,13 @@ API Reference
 
 .. currentmodule:: erizo
 
-Functionality 1
----------------
+Elastic Interpolation
+---------------------
 
 .. autosummary::
     :toctree: generated/
 
-    function
+    Elastic2D
 
 Utilities
 ---------
