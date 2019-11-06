@@ -2,6 +2,7 @@
 # Import functions/classes to make the public API
 from . import version
 from .function import function
+from .elastic2d import Elastic2D
 
 
 def test(doctest=True, verbose=True):

@@ -1,1 +1,5 @@
 numpy
+numba
+scikit-learn
+verde
+pooch
