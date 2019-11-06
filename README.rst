@@ -43,16 +43,20 @@ or send us a message on our
 About
 -----
 
-PROJECT DESCRIPTION.
-Define what this project does and optionally what it doesn't do (point to other
-packages that already solve this problem).
+Erizo is a Python package for interpolation (*gridding*) of multi-component
+ground displacement measurements (from GPS/GNSS or InSAR, for example).
+It uses an elastic Green's functions approach for interpolation based on
+[Verde](https://www.fatiando.org/verde).
 
 
 Project goals
 -------------
 
-* Outline the main project goals
-* Used to define the vision for this project and which features to prioritize
+* 2- and 3-component velocity/displacement interpolation.
+* Use simple elastic Green's functions.
+* Include cross-validated versions of all interpolators.
+* Provide an interface similar to scikit-learn for machine learning style
+  interpolation.
 
 
 Contacting Us
