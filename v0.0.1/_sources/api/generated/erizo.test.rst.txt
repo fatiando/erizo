@@ -1,0 +1,12 @@
+erizo.test
+==========
+
+.. currentmodule:: erizo
+
+.. autofunction:: test
+
+.. include:: backreferences/erizo.test.examples
+
+.. raw:: html
+
+     <div style='clear:both'></div>
