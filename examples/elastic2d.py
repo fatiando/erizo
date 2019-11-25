@@ -67,7 +67,7 @@ grid = vd.distance_mask(
 predicted = chain.predict(projection(*coordinates))
 residuals = (data.velocity_east - predicted[0], data.velocity_north - predicted[1])
 
-# Make maps of the original velocities, the gridded velocities, and the residuals
+# Make maps of the original velocities, gridded velocities, and the residuals
 fig, axes = plt.subplots(
     1, 2, figsize=(12, 8), subplot_kw=dict(projection=ccrs.Mercator())
 )
