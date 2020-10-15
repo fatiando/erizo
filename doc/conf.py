@@ -1,16 +1,15 @@
-# -*- coding: utf-8 -*-
+"""
+Sphinx configuration
+"""
 import sys
 import os
 import datetime
+
 import sphinx_rtd_theme
 import sphinx_gallery
 from sphinx_gallery.sorting import FileNameSortKey
-
-# Sphinx needs to be able to import the package to use autodoc and get the
-# version number
-sys.path.append(os.path.pardir)
-
 from erizo.version import full_version
+
 
 extensions = [
     "sphinx.ext.autodoc",
@@ -48,7 +47,7 @@ sphinx_gallery_conf = {
     "examples_dirs": ["../examples", "../tutorials"],
     # path where to save gallery generated examples
     "gallery_dirs": ["gallery", "tutorials"],
-    "filename_pattern": "\.py",
+    "filename_pattern": r"\.py",
     # Remove the "Download all examples" button from the top level gallery
     "download_all_examples": False,
     # Sort gallery example by file name instead of number of lines (default)
@@ -140,6 +139,7 @@ html_context = {
     "github_repo": "fatiando/erizo",
     "github_version": "master",
 }
+
 
 # Load the custom CSS files (needs sphinx >= 1.6 for this to work)
 def setup(app):
