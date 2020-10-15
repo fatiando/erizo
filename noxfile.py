@@ -58,7 +58,7 @@ def check(session):
     """
     Check code style using black, flake8, and pylint
     """
-    session.install("-r", REQUIREMENTS["style"])
+    install_requirements(session, ["style"])
     list_packages(session)
     args = list(session.posargs)
     if "list-packages" in args:
@@ -76,7 +76,7 @@ def format(session):
     """
     Run black to format the code
     """
-    session.install("-r", REQUIREMENTS["style"])
+    install_requirements(session, ["style"])
     session.run("black", *STYLE_ARGS["black"][1:])
 
 
@@ -85,7 +85,7 @@ def test(session):
     """
     Run the tests and measure coverage (using pip)
     """
-    session.install("-r", REQUIREMENTS["test"], "-r", REQUIREMENTS["run"])
+    install_requirements(session, ["run", "test"])
     package = build_packages(session)
     session.install("--no-deps", package)
     list_packages(session)
@@ -97,19 +97,19 @@ def test_conda(session):
     """
     Run the tests and measure coverage (using conda)
     """
-    session.conda_install("--file", REQUIREMENTS["test"], "--file", REQUIREMENTS["run"])
+    install_requirements(session, ["run", "test"], package_manager="conda")
     package = build_packages(session)
     session.install("--no-deps", package)
     list_packages(session, package_manager="conda")
     run_pytest(session)
 
 
-@nox.session()
+@nox.session(venv_backend="conda")
 def docs(session):
     """
     Build the documentation
     """
-    session.install("-r", REQUIREMENTS["docs"], "-r", REQUIREMENTS["run"])
+    install_requirements(session, ["run", "docs"], package_manager="conda")
     package = build_packages(session)
     session.install("--no-deps", package)
     list_packages(session)
@@ -175,6 +175,28 @@ def clean(session):
 
 # UTILITY FUNCTIONS
 ###############################################################################
+
+
+def install_requirements(session, requirements, package_manager="pip"):
+    """
+    Meh
+    """
+    if package_manager not in {"pip", "conda"}:
+        raise ValueError(f"Invalid package manager '{package_manager}'")
+    arg_name = {"pip": "-r", "conda": "--file"}
+    args = []
+    for requirement in requirements:
+        args.extend([arg_name[package_manager], REQUIREMENTS[requirement]])
+    if package_manager == "pip":
+        session.install(*args)
+    elif package_manager == "conda":
+        session.conda_install(
+            "--channel",
+            "conda-forge",
+            "--channel",
+            "defaults",
+            *args,
+        )
 
 
 def list_packages(session, package_manager="pip"):
