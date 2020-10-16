@@ -86,8 +86,7 @@ def test(session):
     Run the tests and measure coverage (using pip)
     """
     install_requirements(session, ["run", "test"])
-    package = build_packages(session)
-    session.install("--no-deps", package)
+    packages = build_project(session, install=True)
     list_packages(session)
     run_pytest(session)
 
@@ -98,8 +97,7 @@ def test_conda(session):
     Run the tests and measure coverage (using conda)
     """
     install_requirements(session, ["run", "test"], package_manager="conda")
-    package = build_packages(session)
-    session.install("--no-deps", package)
+    build_project(session, install=True)
     list_packages(session, package_manager="conda")
     run_pytest(session)
 
@@ -113,8 +111,7 @@ def docs(session):
     pip (cartopy, in particular).
     """
     install_requirements(session, ["run", "docs"], package_manager="conda")
-    package = build_packages(session)
-    session.install("--no-deps", package)
+    build_project(session, install=True)
     list_packages(session, package_manager="conda")
     # Generate the API reference
     session.run(
@@ -141,7 +138,8 @@ def build(session):
     """
     Build source and wheel distributions for the project
     """
-    build_packages(session)
+    packages = build_project(session, install=False)
+    check_packages(session, packages)
     list_packages(session)
 
 
@@ -190,6 +188,9 @@ def install_requirements(session, requirements, package_manager="pip"):
     """
     if package_manager not in {"pip", "conda"}:
         raise ValueError(f"Invalid package manager '{package_manager}'")
+    if session.posargs and "skip-install" in session.posargs:
+        session.log(f"Skipping install steps.")
+        return
     arg_name = {"pip": "-r", "conda": "--file"}
     args = []
     for requirement in requirements:
@@ -237,19 +238,26 @@ def run_pytest(session):
         shutil.copy(f, Path(__file__).parent)
 
 
-def build_packages(session):
+def build_project(session, install=False):
     """
-    Build and check source and wheel packages for the project. Returns the path
-    to the built wheel for installing.
+    Build source and wheel packages for the project and returns their path.
+    If 'install==True', will also install the package.
     """
-    session.log("Build and check source and wheel distributions:")
+    session.log("Build source and wheel distributions:")
     if Path("dist").exists():
         shutil.rmtree("dist")
-    session.install("wheel", "twine")
+    session.install("wheel")
     session.run("python", "setup.py", "sdist", "bdist_wheel", silent=True)
-    for package in Path("dist").glob("*"):
+    packages = list(Path("dist").glob("*"))
+    if install:
+        session.install("--force-reinstall", "--no-deps", str(packages[0]))
+    return packages
+
+
+def check_packages(session, packages):
+    """
+    Use twine to check the built packages (source and wheel).
+    """
+    session.install("twine")
+    for package in packages:
         session.run("twine", "check", str(package))
-    wheel = [str(p) for p in Path("dist").glob("*.whl")]
-    if len(wheel) != 1:
-        raise ValueError(f"More than 1 wheel present: {wheel}")
-    return wheel[0]
