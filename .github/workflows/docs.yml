@@ -14,7 +14,6 @@ on:
   push:
     branches:
       - master
-      - testing
   release:
     types:
       - published
@@ -61,12 +60,11 @@ jobs:
           key: conda-${{ runner.os }}-${{ matrix.python }}
 
       - name: Setup miniconda
-        uses: goanpeca/setup-miniconda@v1
+        uses: conda-incubator/setup-miniconda@v1.7.0
         with:
           python-version: "3.8"
           miniconda-version: "latest"
-          auto-update-conda: true
-          channels: conda-forge, defaults
+          auto-update-conda: false
           show-channel-urls: true
           # Needed for caching
           use-only-tar-bz2: true
