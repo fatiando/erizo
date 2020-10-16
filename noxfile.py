@@ -20,6 +20,7 @@ REQUIREMENTS = {
     "test": str(Path("env") / "requirements-test.txt"),
     "docs": str(Path("env") / "requirements-docs.txt"),
     "style": str(Path("env") / "requirements-style.txt"),
+    "build": str(Path("env") / "requirements-build.txt"),
 }
 
 STYLE_ARGS = {
@@ -52,6 +53,10 @@ RST_FILES = [str(p.resolve()) for p in Path("doc").glob("**/*.rst")]
 # Configure Nox
 nox.options.sessions = ("check", "test")
 
+# Command line arguments that we're implementing. Pass them to nox after "--":
+#   nox -s test -- list-packages
+NOX_ARGS = ["skip-install", "list-packages"]
+
 
 @nox.session()
 def check(session):
@@ -60,9 +65,7 @@ def check(session):
     """
     install_requirements(session, ["style"])
     list_packages(session)
-    args = list(session.posargs)
-    if "list-packages" in args:
-        args.remove("list-packages")
+    args = list(set(session.posargs).difference(NOX_ARGS))
     if args:
         checks = args
     else:
@@ -85,7 +88,7 @@ def test(session):
     """
     Run the tests and measure coverage (using pip)
     """
-    install_requirements(session, ["run", "test"])
+    install_requirements(session, ["build", "run", "test"])
     packages = build_project(session, install=True)
     list_packages(session)
     run_pytest(session)
@@ -96,7 +99,7 @@ def test_conda(session):
     """
     Run the tests and measure coverage (using conda)
     """
-    install_requirements(session, ["run", "test"], package_manager="conda")
+    install_requirements(session, ["build", "run", "test"], package_manager="conda")
     build_project(session, install=True)
     list_packages(session, package_manager="conda")
     run_pytest(session)
@@ -110,7 +113,7 @@ def docs(session):
     Uses conda instead of pip because some dependencies don't install well with
     pip (cartopy, in particular).
     """
-    install_requirements(session, ["run", "docs"], package_manager="conda")
+    install_requirements(session, ["build", "run", "docs"], package_manager="conda")
     build_project(session, install=True)
     list_packages(session, package_manager="conda")
     # Generate the API reference
@@ -138,6 +141,7 @@ def build(session):
     """
     Build source and wheel distributions for the project
     """
+    install_requirements(session, ["build"])
     packages = build_project(session, install=False)
     check_packages(session, packages)
     list_packages(session)
@@ -246,7 +250,6 @@ def build_project(session, install=False):
     session.log("Build source and wheel distributions:")
     if Path("dist").exists():
         shutil.rmtree("dist")
-    session.install("wheel")
     session.run("python", "setup.py", "sdist", "bdist_wheel", silent=True)
     packages = list(Path("dist").glob("*"))
     if install:
@@ -258,6 +261,5 @@ def check_packages(session, packages):
     """
     Use twine to check the built packages (source and wheel).
     """
-    session.install("twine")
     for package in packages:
         session.run("twine", "check", str(package))
