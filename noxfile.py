@@ -108,6 +108,9 @@ def test_conda(session):
 def docs(session):
     """
     Build the documentation
+
+    Uses conda instead of pip because some dependencies don't install well with
+    pip (cartopy, in particular).
     """
     install_requirements(session, ["run", "docs"], package_manager="conda")
     package = build_packages(session)

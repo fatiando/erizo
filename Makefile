@@ -22,7 +22,8 @@ test:
 format:
 	nox -rs format
 
-check: black-check flake8
+check:
+	nox -rs check
 
 black-check:
 	nox -rs check -- black
