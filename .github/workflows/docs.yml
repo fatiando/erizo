@@ -48,23 +48,20 @@ jobs:
       - name: Fetch git tags
         run: git fetch origin 'refs/tags/*:refs/tags/*'
 
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.8"
-
       - name: Setup caching for conda packages
         uses: actions/cache@v2
         with:
           path: ~/conda_pkgs_dir
-          key: conda-${{ runner.os }}-${{ matrix.python }}
+          key: conda-${{ runner.os }}
 
       - name: Setup miniconda
         uses: conda-incubator/setup-miniconda@v1.7.0
         with:
           python-version: "3.8"
           miniconda-version: "latest"
-          auto-update-conda: false
+          mamba-version: "*"
+          channels: conda-forge,defaults
+          auto-update-conda: true
           show-channel-urls: true
           # Needed for caching
           use-only-tar-bz2: true
