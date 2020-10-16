@@ -58,8 +58,8 @@ jobs:
         uses: conda-incubator/setup-miniconda@v1.7.0
         with:
           python-version: "3.8"
-          mamba-version: "*"
           channels: conda-forge,defaults
+          auto-update-conda: true
           show-channel-urls: true
           # Needed for caching
           use-only-tar-bz2: true

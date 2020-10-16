@@ -194,22 +194,11 @@ def install_requirements(session, requirements, package_manager="pip"):
     if package_manager == "pip":
         session.install(*args)
     elif package_manager == "conda":
-        session.run(
-            "mamba",
-            "install",
-            "--yes",
-            "--prefix",
-            session.virtualenv.location,
+        session.conda_install(
             "--channel=conda-forge",
             "--channel=defaults",
             *args,
-            silent=True,
         )
-        # session.conda_install(
-        # "--channel=conda-forge",
-        # "--channel=defaults",
-        # *args,
-        # )
 
 
 def list_packages(session, package_manager="pip"):
