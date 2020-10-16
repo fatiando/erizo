@@ -195,7 +195,9 @@ def install_requirements(session, requirements, package_manager="pip"):
         session.install(*args)
     elif package_manager == "conda":
         session.conda_install(
-            "--channel=conda-forge", "--channel=defaults", *args,
+            "--channel=conda-forge",
+            "--channel=defaults",
+            *args,
         )
 
 
