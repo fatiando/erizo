@@ -1,0 +1,74 @@
+# Linting and style checks with GitHub Actions
+#
+# NOTE: Pin actions to a specific commit to avoid having the authentication
+# token stolen if the Action is compromised. See the comments and links here:
+# https://github.com/pypa/gh-action-pypi-publish/issues/27
+#
+name: code-style
+
+# Only build PRs and the master branch. Pushes to branches will only be built
+# when a PR is opened.
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+###############################################################################
+jobs:
+  black:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+
+      - name: Install nox
+        run: python -m pip install nox
+
+      - name: Check code format
+        run: nox -s check -- black list-packages
+
+  flake8:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+
+      - name: Install nox
+        run: python -m pip install nox
+
+      - name: Check code style
+        run: nox -s check -- flake8 list-packages
+
+  pylint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+
+      - name: Install nox
+        run: python -m pip install nox
+
+      - name: Linting (pylint)
+        run: nox -s check -- pylint list-packages

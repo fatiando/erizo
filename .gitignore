@@ -5,6 +5,7 @@
 .pytest_cache/
 build/
 dist/
+.nox
 .*.swp
 .coverage
 .cache

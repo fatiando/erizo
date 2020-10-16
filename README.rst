@@ -11,9 +11,9 @@ Part of the `Fatiando a Terra <https://www.fatiando.org>`__ project
 .. image:: http://img.shields.io/pypi/v/erizo.svg?style=flat-square
     :alt: Latest version on PyPI
     :target: https://pypi.python.org/pypi/erizo
-.. image:: http://img.shields.io/travis/fatiando/erizo/master.svg?style=flat-square&label=TravisCI
-    :alt: TravisCI build status
-    :target: https://travis-ci.org/fatiando/erizo
+.. image:: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Ffatiando%2Ferizo%2Fbadge%3Fref%3Dmaster&style=flat-square&logo=none
+    :alt: GitHub Actions status
+    :target: https://actions-badge.atrox.dev/fatiando/boule/goto?ref=master
 .. image:: https://img.shields.io/codecov/c/github/fatiando/erizo/master.svg?style=flat-square
     :alt: Test coverage status
     :target: https://codecov.io/gh/fatiando/erizo

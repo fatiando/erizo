@@ -1,0 +1,6 @@
+# Requirements for building the documentation
+matplotlib
+cartopy
+sphinx==2.2.1
+sphinx_rtd_theme==0.4.3
+sphinx-gallery
