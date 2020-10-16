@@ -104,7 +104,7 @@ def test_conda(session):
     run_pytest(session)
 
 
-@nox.session(venv_backend="conda")
+@nox.session(venv_backend="conda", python=["3.8"])
 def docs(session):
     """
     Build the documentation
@@ -112,7 +112,7 @@ def docs(session):
     install_requirements(session, ["run", "docs"], package_manager="conda")
     package = build_packages(session)
     session.install("--no-deps", package)
-    list_packages(session)
+    list_packages(session, package_manager="conda")
     # Generate the API reference
     session.run(
         "sphinx-autogen",
@@ -179,7 +179,11 @@ def clean(session):
 
 def install_requirements(session, requirements, package_manager="pip"):
     """
-    Meh
+    Install dependencies from the requirements files specified in REQUIREMENTS.
+
+    *requirements* should be a list of keywords defined in the REQUIREMENTS
+    dictionary. Set *package_manager* to "conda" if using the conda backend for
+    virtual environments.
     """
     if package_manager not in {"pip", "conda"}:
         raise ValueError(f"Invalid package manager '{package_manager}'")
@@ -191,11 +195,7 @@ def install_requirements(session, requirements, package_manager="pip"):
         session.install(*args)
     elif package_manager == "conda":
         session.conda_install(
-            "--channel",
-            "conda-forge",
-            "--channel",
-            "defaults",
-            *args,
+            "--channel=conda-forge", "--channel=defaults", *args,
         )
 
 
