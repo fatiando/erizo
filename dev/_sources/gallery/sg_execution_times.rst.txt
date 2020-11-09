@@ -5,6 +5,10 @@
 
 Computation times
 =================
-**00:00.041** total execution time for **gallery** files:
+**00:22.860** total execution time for **gallery** files:
 
-- **00:00.041**: :ref:`sphx_glr_gallery_example.py` (``example.py``)
++---------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_gallery_elastic2d.py` (``elastic2d.py``) | 00:22.860 | 0.0 MB |
++---------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_gallery_example.py` (``example.py``)     | 00:00.001 | 0.0 MB |
++---------------------------------------------------------+-----------+--------+

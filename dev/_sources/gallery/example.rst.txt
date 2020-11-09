@@ -1,10 +1,12 @@
-.. note::
-    :class: sphx-glr-download-link-note
+.. only:: html
 
-    Click :ref:`here <sphx_glr_download_gallery_example.py>` to download the full example code
-.. rst-class:: sphx-glr-example-title
+    .. note::
+        :class: sphx-glr-download-link-note
 
-.. _sphx_glr_gallery_example.py:
+        Click :ref:`here <sphx_glr_download_gallery_example.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_gallery_example.py:
 
 
 Example of Function
@@ -27,6 +29,7 @@ This is an example of :func:`erizo.function`.
 
 
 
+
 |
 
 
@@ -40,7 +43,7 @@ This is an example of :func:`erizo.function`.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.041 seconds)
+   **Total running time of the script:** ( 0 minutes  0.001 seconds)
 
 
 .. _sphx_glr_download_gallery_example.py:
@@ -53,13 +56,13 @@ This is an example of :func:`erizo.function`.
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-python
 
      :download:`Download Python source code: example.py <example.py>`
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
 
      :download:`Download Jupyter notebook: example.ipynb <example.ipynb>`
 

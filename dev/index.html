@@ -38,8 +38,10 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
   <link rel="stylesheet" href="_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-dataframe.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Overview" href="tutorials/overview.html" />
@@ -79,7 +81,7 @@
             
             
               <div class="version">
-                v0.0.1
+                dev
               </div>
             
           
@@ -210,7 +212,8 @@
   <div class="section" id="erizo">
 <h1>Erizo<a class="headerlink" href="#erizo" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div>Elastic multi-component interpolation of ground displacement</div></blockquote>
+<div><p>Elastic multi-component interpolation of ground displacement</p>
+</div></blockquote>
 <div class="section" id="disclaimer">
 <h2>Disclaimer<a class="headerlink" href="#disclaimer" title="Permalink to this headline">¶</a></h2>
 <p>🚨 <strong>This package is in early stages of design and implementation.</strong> 🚨</p>
@@ -225,26 +228,28 @@ or send us a message on our
 <p>Erizo is a Python package for interpolation (<em>gridding</em>) of multi-component
 ground displacement measurements (from GPS/GNSS or InSAR, for example).
 It uses an elastic Green’s functions approach for interpolation based on
-[Verde](<a class="reference external" href="https://www.fatiando.org/verde">https://www.fatiando.org/verde</a>).</p>
+<a class="reference external" href="https://www.fatiando.org/verde">Verde</a>.</p>
 </div>
 <div class="section" id="project-goals">
 <h2>Project goals<a class="headerlink" href="#project-goals" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>2- and 3-component velocity/displacement interpolation.</li>
-<li>Use simple elastic Green’s functions.</li>
-<li>Include cross-validated versions of all interpolators.</li>
-<li>Provide an interface similar to scikit-learn for machine learning style
-interpolation.</li>
+<li><p>2- and 3-component velocity/displacement interpolation.</p></li>
+<li><p>Use simple elastic Green’s functions.</p></li>
+<li><p>Include cross-validated versions of all interpolation classes.</p></li>
+<li><p>Scale to moderately sized datasets (without requiring 100s Gb of RAM) using
+numba and dask.</p></li>
+<li><p>Provide an interface similar to scikit-learn for machine learning style
+interpolation.</p></li>
 </ul>
 </div>
 <div class="section" id="contacting-us">
 <h2>Contacting Us<a class="headerlink" href="#contacting-us" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Most discussion happens <a class="reference external" href="https://github.com/fatiando/erizo">on Github</a>.
+<li><p>Most discussion happens <a class="reference external" href="https://github.com/fatiando/erizo">on Github</a>.
 Feel free to <a class="reference external" href="https://github.com/fatiando/erizo/issues/new">open an issue</a> or comment
-on any open issue or pull request.</li>
-<li>We have <a class="reference external" href="http://contact.fatiando.org">chat room on Slack</a>
-where you can ask questions and leave comments.</li>
+on any open issue or pull request.</p></li>
+<li><p>We have <a class="reference external" href="http://contact.fatiando.org">chat room on Slack</a>
+where you can ask questions and leave comments.</p></li>
 </ul>
 </div>
 <div class="section" id="contributing">
@@ -270,7 +275,7 @@ enough to contribute.
 What could you possibly offer?</p>
 <p>We assure you that the little voice in your head is wrong.</p>
 <p><strong>Being a contributor doesn’t just mean writing code</strong>.
-Equality important contributions include:
+Equally important contributions include:
 writing or proof-reading documentation, suggesting or implementing tests, or
 even giving feedback about the project (including giving feedback about the
 contribution process).
@@ -293,10 +298,10 @@ of the <strong>BSD 3-clause License</strong>. A copy of this license is provided
 <div class="section" id="documentation-for-other-versions">
 <h2>Documentation for other versions<a class="headerlink" href="#documentation-for-other-versions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="http://www.fatiando.org/erizo/dev">Development</a> (reflects the <em>master</em> branch on
-Github)</li>
-<li><a class="reference external" href="http://www.fatiando.org/erizo/latest">Latest release</a></li>
-<li><a class="reference external" href="http://www.fatiando.org/erizo/v0.0.1">v0.0.1</a></li>
+<li><p><a class="reference external" href="http://www.fatiando.org/erizo/dev">Development</a> (reflects the <em>master</em> branch on
+Github)</p></li>
+<li><p><a class="reference external" href="http://www.fatiando.org/erizo/latest">Latest release</a></p></li>
+<li><p><a class="reference external" href="http://www.fatiando.org/erizo/v0.0.1">v0.0.1</a></p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -325,9 +330,9 @@ Github)</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019-2019, The Erizo Developers
+        &copy; Copyright 2019-2020, The Erizo Developers
       <span class="lastupdated">
-        Last updated on Nov 06, 2019.
+        Last updated on Nov 09, 2020.
       </span>
 
     </p>

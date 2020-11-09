@@ -19,7 +19,17 @@ doesn't interfere with any other Python installations in your system.
 Dependencies
 ------------
 
-* List dependencies here with links to the projects
+* `numpy <http://www.numpy.org/>`__
+* `numba <https://numba.pydata.org/>`__
+* `scikit-learn <http://scikit-learn.org/>`__
+* `verde <https://www.fatiando.org/verde/>`__
+* `pooch <https://www.fatiando.org/pooch/>`__
+
+Most of the examples in the :ref:`gallery` and :ref:`tutorials` also use:
+
+* `matplotlib <https://matplotlib.org/>`__
+* `cartopy <https://scitools.org.uk/cartopy/>`__ for plotting maps
+* `pyproj <https://jswhit.github.io/pyproj/>`__ for cartographic projections
 
 
 Installing the latest development version

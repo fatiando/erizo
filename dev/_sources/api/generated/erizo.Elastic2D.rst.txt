@@ -1,0 +1,60 @@
+erizo.Elastic2D
+===============
+
+.. currentmodule:: erizo
+
+.. autoclass:: Elastic2D
+
+.. include:: backreferences/erizo.Elastic2D.examples
+
+.. raw:: html
+
+     <div style='clear:both'></div>
+
+
+
+
+
+.. automethod:: Elastic2D.filter
+
+
+
+.. automethod:: Elastic2D.fit
+
+
+
+.. automethod:: Elastic2D.get_params
+
+
+
+.. automethod:: Elastic2D.grid
+
+
+
+.. automethod:: Elastic2D.jacobian
+
+
+
+.. automethod:: Elastic2D.predict
+
+
+
+.. automethod:: Elastic2D.profile
+
+
+
+.. automethod:: Elastic2D.scatter
+
+
+
+.. automethod:: Elastic2D.score
+
+
+
+.. automethod:: Elastic2D.set_params
+
+
+
+.. raw:: html
+
+     <div style='clear:both'></div>

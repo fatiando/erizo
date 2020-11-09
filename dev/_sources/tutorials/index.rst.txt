@@ -17,9 +17,10 @@ Tutorials
 
 .. only:: html
 
-    .. figure:: /tutorials/images/thumb/sphx_glr_overview_thumb.png
+ .. figure:: /tutorials/images/thumb/sphx_glr_overview_thumb.png
+     :alt: Overview
 
-        :ref:`sphx_glr_tutorials_overview.py`
+     :ref:`sphx_glr_tutorials_overview.py`
 
 .. raw:: html
 
@@ -32,7 +33,7 @@ Tutorials
    /tutorials/overview
 .. raw:: html
 
-    <div style='clear:both'></div>
+    <div class="sphx-glr-clear"></div>
 
 
 
