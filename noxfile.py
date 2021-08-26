@@ -44,7 +44,7 @@ NOX_ARGS = ["skip-install", "list-packages", "show"]
 
 
 PACKAGE = "erizo"
-PYTHON_VERSIONS = ["3.8", "3.7", "3.6"]
+PYTHON_VERSIONS = ["3.9", "3.8", "3.7", "3.6"]
 DOCS = Path("doc")
 REQUIREMENTS = {
     "run": "requirements.txt",
