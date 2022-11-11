@@ -1,3 +1,8 @@
+**NOTICE:** Work on Erizo has been discontinued. The funcionality here will still
+be available through `Verde <https://www.fatiando.org/verde>`__.
+
+----
+
 Erizo
 =====
 
